@@ -13,7 +13,7 @@ def decompress_string(compressed_data: bytes) -> str:
     # Преобразуем байты обратно в строку
     return decompressed_data.decode('utf-8')
 
-# Пример использования
+# использование
 original_data = "Python и zlib — мощный дуэт для сжатия данных! " * 100
 compressed = compress_string(original_data)
 decompressed = decompress_string(compressed)
@@ -38,7 +38,7 @@ def decompress_file(input_path: str, output_path: str):
     with open(output_path, 'wb') as f_out:
         f_out.write(decompressed_data)
 
-# Пример использования
+#вывод
 compress_file("large_data.txt", "compressed.zlib")
 decompress_file("compressed.zlib", "decompressed.txt")
 
