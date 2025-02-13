@@ -9,7 +9,7 @@ def object_detection_on_an_image():
     
     # Обработка изображения
     result = segment_image.segmentImage(
-        image_path=r"C:\Users\User\PycharmProjects\Training\LlmObject\фото\i.webp",
+        image_path=r"C:\Users\User\PycharmProjects\LlmObject\фото\i.webp",
         show_bboxes=True,
         segment_target_classes=target_classes,
         output_image_name="foto.jpg",
