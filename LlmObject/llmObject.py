@@ -1,0 +1,27 @@
+from pixellib.instance import instance_segmentation
+
+from Training.OOP.composition import person
+
+
+def object_detection_on_an_object():
+    segment_image = instance_segmentation()
+    segment_image.load_model("mask_rcnn_coco.h5")
+    target_class = segment_image.select_target_classes(person = True,
+                                                        car = True)
+    result =segment_image.segmentImage("C:\\Users\\User\PycharmProjects"
+                               "\Training\LlmObject\фото\i.webp",
+                               extract_segmented_objects=True,
+                               output_image_name="foto.jpg",
+                               show_bboxes=True,
+                               segment_target_classes=target_class,
+                               save_extracted_objects=True
+                               )
+    print(result[0])
+    objects = len(result[0])
+    print("Объектов на изображении:", objects)
+
+def main():
+    object_detection_on_an_object()
+
+if __name__ == '__main__':
+    main()
