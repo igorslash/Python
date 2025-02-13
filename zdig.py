@@ -14,7 +14,7 @@ def decompress_string(compressed_data: bytes) -> str:
     return decompressed_data.decode('utf-8')
 
 # использование
-original_data = "Python и zlib — мощный дуэт для сжатия данных! " * 100
+original_data = "сжатие данных! " * 100
 compressed = compress_string(original_data)
 decompressed = decompress_string(compressed)
 
