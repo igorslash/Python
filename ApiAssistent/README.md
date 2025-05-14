@@ -1,4 +1,4 @@
-# PyAssistant
+# ApiAssistant
 Голосовой ассистент на Python с ИИ.
 
 ## Возможности
