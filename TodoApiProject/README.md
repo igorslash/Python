@@ -1,3 +1,9 @@
+# Установка зависимостей
+pip install -r requirements.txt
+
+# Запуск crew
+python main.py
+
 Архитектор
 
 "Спроектируй консольное приложение ToDo List на Python. Опиши файлы, классы и связи между ними."

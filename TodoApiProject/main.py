@@ -1,20 +1,28 @@
-from crewai import Crew, Process
-from agents.architect import architect
-from agents.developer import developer
-from agents.tester import tester
-from agents.documenter import documenter
-from tasks.flow import create_tasks
+from crewai import Crew
+from flow import create_tasks
+from agents import architect, developer, tester, documenter
+import os
 
-if __name__ == "__main__":
-    tasks = create_tasks(architect, developer, tester, documenter)
-
+def main():
+    print("🚀 Starting ToDo List App Development Crew...")
+    
+    # Создаем задачи
+    tasks = create_tasks()
+    
+    # Создаем crew
     crew = Crew(
         agents=[architect, developer, tester, documenter],
         tasks=tasks,
-        process=Process.sequential,
         verbose=True
     )
-
+    
+    # Запускаем процесс
     result = crew.kickoff()
-    print("\n=== Итоговый результат ===\n")
-    print(result)
+    
+    print("✅ Development completed!")
+    print(f"Results saved in 'output/' directory")
+    
+    return result
+
+if __name__ == "__main__":
+    main()
