@@ -1,0 +1,14 @@
+from fastapi import FastAPI
+from agent import InsuranceAgent
+
+app = FastAPI()
+agent = InsuranceAgent()
+
+@app.post("/chat")
+async def chat(message: str):
+    return agent.process(message)
+
+# Или с явным указанием задачи:
+@app.post("/analyze-sentiment") 
+async def analyze_sentiment(text: str):
+    return agent.process(text, task_type="sentiment_analysis")
