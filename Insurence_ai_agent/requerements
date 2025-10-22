@@ -1,0 +1,4 @@
+torch = 1.13.0
+transformers = 4.30.0
+langdetect = 1.0.9
+python-telegram-bot = 20.0
