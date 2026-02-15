@@ -1,0 +1,8 @@
+pytorch-lightning
+transformers
+fastapi
+uvicorn
+torchmetrics
+datasets
+Сборка образа (в терминале): docker build -t emotion-app .
+Запуск: docker run -p 8000:8000 emotion-app
