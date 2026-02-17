@@ -1,0 +1,27 @@
+# СОЗДАЙ СЕБЕ ШПАРГАЛКУ В КОДЕ:
+COMMON_TAGS = {
+    "POS": {
+        "NOUN": "существительное",
+        "VERB": "глагол",
+        "ADJ": "прилагательное",
+        "ADV": "наречие",
+        "PROPN": "имя собственное",
+        "DET": "артикль/определитель",
+        "ADP": "предлог",
+    },
+    "DEP": {
+        "nsubj": "подлежащее",
+        "dobj": "прямое дополнение",
+        "ROOT": "корень предложения",
+        "det": "определитель",
+        "compound": "составное слово",
+    }
+}
+
+def explain_token(token):
+    pos_desc = COMMON_TAGS["POS"].get(token.pos_, token.pos_)
+    dep_desc = COMMON_TAGS["DEP"].get(token.dep_, token.dep_)
+    return f"'{token.text}' - {pos_desc}, {dep_desc}"
+
+for token in doc:
+    print(explain_token(token))

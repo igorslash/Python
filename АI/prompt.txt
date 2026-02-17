@@ -1,0 +1,66 @@
+from crewai import Agent, Task, Crew
+from langchain_openai import ChatOpenAI
+
+# Общая LLM-модель
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+
+# === Агенты ===
+architect = Agent(
+    role="Архитектор",
+    goal="Проектировать архитектуру приложения",
+    backstory="Опытный архитектор ПО. Умеет разбивать задачу на модули и файлы.",
+    llm=llm
+)
+
+developer = Agent(
+    role="Разработчик",
+    goal="Реализовать код по архитектурному плану",
+    backstory="Сильный программист. Следует указаниям архитектора.",
+    llm=llm
+)
+
+tester = Agent(
+    role="Тестировщик",
+    goal="Создавать и запускать тесты, исправлять ошибки",
+    backstory="Инженер по качеству. Умеет писать pytest-тесты.",
+    llm=llm
+)
+
+documenter = Agent(
+    role="Документатор",
+    goal="Создавать документацию и README",
+    backstory="Технический писатель, делает код понятным и поддерживаемым.",
+    llm=llm
+)
+
+# === Задачи ===
+task1 = Task(
+    description="Спроектировать консольное приложение ToDo List на Python.",
+    agent=architect
+)
+
+task2 = Task(
+    description="Реализовать код по архитектуре: классы Task, ToDoList, команды CLI.",
+    agent=developer
+)
+
+task3 = Task(
+    description="Создать pytest-тесты для ToDoList, проверить добавление/удаление задач.",
+    agent=tester
+)
+
+task4 = Task(
+    description="Написать README с инструкцией по запуску, примеры использования.",
+    agent=documenter
+)
+
+# === Рой агентов ===
+crew = Crew(
+    agents=[architect, developer, tester, documenter],
+    tasks=[task1, task2, task3, task4],
+    verbose=True
+)
+
+# Запуск
+result = crew.kickoff()
+print(result)
