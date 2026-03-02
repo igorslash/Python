@@ -4,14 +4,14 @@ from datasets import Dataset
 import pandas as pd
 import json
 
-# 2. Загрузка модели (без изменений)
+# 2. Загрузка модели 
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name = "unsloth/Qwen2.5-1.5B-it-bnb-4bit",
     max_seq_length = 2048,
     load_in_4bit = True,
 )
 
-# 3. Настройка LoRA (без изменений)
+# 3. Настройка LoRA 
 model = FastLanguageModel.get_peft_model(
     model,
     r = 16,
@@ -35,7 +35,7 @@ with open(file_path, 'r', encoding='utf-8') as f:
 # Превращаем в датасет Hugging Face напрямую, минуя мучения с Pandas
 dataset = Dataset.from_list(data_list)
 
-# Шаблон промпта (добавили контекст, чтобы модель знала схему БД)
+# Шаблон промпта 
 def format_prompts(examples):
     instructions = examples["instruction"]
     outputs      = examples["output"]
