@@ -8,7 +8,7 @@ def validate_sql(sql_query):
     except sqlglot.errors.ParseError as e:
         return False, str(e)
 
-# Пример использования
+
 generated_sql = ask_sql("Покажи баланс счета 123")
 is_valid, message = validate_sql(generated_sql)
 
