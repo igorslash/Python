@@ -5,7 +5,7 @@ from transformers import AutoTokenizer
 
 app = FastAPI()  # Создаем сервер
 
-# Загружаем модель (в реальности лучше грузить из чекпоинта)
+# Загружаем модель 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 model = ProEmotionClassifier.load_from_checkpoint("emotion_model.ckpt")
 model.eval()  # Переводим в режим предсказания
