@@ -34,7 +34,7 @@ class ProEmotionClassifier(pl.LightningModule):
         val_loss = outputs.loss
         preds = torch.argmax(outputs.logits, dim=1)
 
-        # Считаем метрики на валидации (самое важное для резюме)
+        # Считаем метрики на валидации 
         self.val_acc(preds, batch["labels"])
         self.val_f1(preds, batch["labels"])
 
