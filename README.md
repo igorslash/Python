@@ -2,12 +2,12 @@
 
 Проект по классификации новостей на достоверные и фейковые с использованием **BERT** и **PyTorch Lightning**.
 
-  Датасет
+## 📊 Датасет
 - 4000+ новостных статей
 - Бинарная классификация (fake/real)
 - Очистка: удаление пустых и коротких текстов
 
-  Архитектура
+## 🏗 Архитектура
 - Модель: `bert-base-uncased` с fine-tuning
 - Фреймворк: PyTorch Lightning
 - Метрики: Accuracy, F1-score
@@ -22,3 +22,4 @@
 ```bash
 pip install -r requirements.txt
 python main.py
+
