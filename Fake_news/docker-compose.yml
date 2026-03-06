@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  training:
+    build: .
+    container_name: fakenews-training
+    runtime: nvidia  # если есть GPU
+    environment:
+      - CUDA_VISIBLE_DEVICES=0  # используем GPU 0
+    volumes:
+      # Монтируем папки, чтобы результаты сохранялись на хосте
+      - ./logs:/app/logs
+      - ./checkpoints:/app/checkpoints
+      - ./data:/app/data  # если данные лежат отдельно
+    command: python main.py
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Опционально: TensorBoard для мониторинга
+  tensorboard:
+    image: tensorflow/tensorflow:latest
+    container_name: fakenews-tensorboard
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./logs:/logs
+    command: tensorboard --logdir /logs --host 0.0.0.0
+    depends_on:
+      - training
