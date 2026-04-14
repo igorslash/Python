@@ -1,0 +1,16 @@
+[package]
+name = "fast-text-proc"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "fast_text_proc"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.20", features = ["extension-module"] }
+regex = "1.10"
+once_cell = "1.19" # Для ленивой инициализации regex
+rayon = "1.8"
+
+[dev-dependencies]

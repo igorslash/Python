@@ -1,25 +1,21 @@
-# Fake News Detection with PyTorch Lightning
+# Fast Text Processor (Rust + Python)
 
-Проект по классификации новостей на достоверные и фейковые с использованием **BERT** и **PyTorch Lightning**.
+High-performance text tokenization and normalization library written in Rust, exposed to Python via PyO3.
 
-## 📊 Датасет
-- 4000+ новостных статей
-- Бинарная классификация (fake/real)
-- Очистка: удаление пустых и коротких текстов
+## 🚀 Features
 
-## 🏗 Архитектура
-- Модель: `bert-base-uncased` с fine-tuning
-- Фреймворк: PyTorch Lightning
-- Метрики: Accuracy, F1-score
-- Оптимизация: Mixed precision (16-bit), Early stopping
+- **Fast Tokenization**: Optimized word splitting without heavy regex overhead.
+- **Text Cleaning**: Efficient punctuation removal and lowercasing.
+- **Email Extraction**: Regex-based email finding compiled once at startup.
+- **Parallel Processing**: Batch processing using Rayon for multi-core utilization.
+- **Pythonic API**: Seamless integration with standard Python types.
 
-## 📈 Результаты
-- Accuracy на валидации: **0.92**
-- F1-score на валидации: **0.89**
-- Сохраняется лучшая модель по F1
+## 📦 Installation
 
-## 🚀 Запуск
+Requires Rust toolchain and `maturin`.
+
 ```bash
-pip install -r requirements.txt
-python main.py
-
+pip install maturin
+git clone https://github.com/yourusername/fast-text-proc.git
+cd fast-text-proc
+maturin develop --release
