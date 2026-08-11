@@ -1,0 +1,20 @@
+[project]
+name = "rag-knowledge-base"
+version = "0.1.0"
+description = "Production-ready RAG system with comprehensive RAGAS evaluation"
+requires-python = ">=3.10"  # RAGAS и современный LlamaIndex требуют 3.10+.
+dependencies = [
+    "llama-index-core>=0.12",           # Core-компоненты LlamaIndex.
+    "llama-index-embeddings-openai",    # OpenAI embeddings (отдельный пакет в v0.10+).
+    "llama-index-llms-openai",          # OpenAI LLM (отдельный пакет).
+    "llama-index-embeddings-huggingface", # HF embeddings для офлайн-работы.
+    "ragas>=0.2",                       # Фреймворк оценки RAG.
+    "langchain-openai",                 # RAGAS использует LangChain-обёртки для judge LLM.
+    "datasets",                         # HuggingFace Dataset для RAGAS.
+    "openai",                           # OpenAI SDK.
+    "python-dotenv",                    # Загрузка .env файлов.
+]
+
+[tool.ruff]
+line-length = 100  # Современный стандарт. 88 (black) тоже ок, но 100 читаемее для длинных строк.
+target-version = "py310"
